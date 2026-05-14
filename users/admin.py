@@ -6,10 +6,11 @@ from .models import CustomUser
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
+    readonly_fields = ('uuid',)
     fieldsets = UserAdmin.fieldsets + (
-        ('Martketplace additional info', {'fields' : ('role', 'balance', 'avatar')}),
+        ('Martketplace additional info', {'fields' : ('uuid', 'role', 'balance', 'avatar')}),
     )
-    list_display = ['username', 'email', 'role', 'balance', 'is_staff']
+    list_display = ['id','username', 'email', 'role', 'balance', 'uuid','is_staff']
     list_filter = ['role', 'is_staff', 'is_active']
 admin.site.register(CustomUser, CustomUserAdmin)
 
