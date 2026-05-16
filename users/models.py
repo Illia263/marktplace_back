@@ -20,6 +20,8 @@ class CustomUser(AbstractUser):
     )
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
 
+    description = models.TextField(blank=True, null=True)
+
 
     def __str__(self):
         return f"{self.username} ({self.get_role_display()}) - Balance: {self.balance}"

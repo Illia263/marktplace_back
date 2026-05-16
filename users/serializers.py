@@ -6,8 +6,8 @@ User = get_user_model()
 class CustomUserSerializer(BaseUserSerializer):
     class Meta(BaseUserSerializer.Meta):
         model = User
-        # Тут ми додаємо твої нові поля, які має бачити фронтенд
-        fields = ('id', 'uuid', 'username', 'email', 'role', 'balance', 'avatar')
+        
+        fields = ('id', 'uuid', 'username', 'email', 'role', 'balance', 'avatar', 'description')
 
 class CustomUserCreateSerializer(BaseUserRegistrationSerializer):
     class Meta(BaseUserRegistrationSerializer.Meta):
