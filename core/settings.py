@@ -199,3 +199,4 @@ if os.path.exists(FIREBASE_KEY_PATH):
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SITE_NAME = 'Marketplace'
+DOMAIN = 'localhost:3000'
