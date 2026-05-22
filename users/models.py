@@ -24,4 +24,4 @@ class CustomUser(AbstractUser):
 
 
     def __str__(self):
-        return f"{self.username} ({self.get_role_display()}) - Balance: {self.balance}"
+        return f"{self.username} ({self.get_role_display()}) - Balance: {self.balance}", self.email
