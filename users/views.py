@@ -20,8 +20,12 @@ class GoogleLoginView(APIView):
             decoded_token = auth.verify_id_token(id_token)
             uid = decoded_token.get('uid')
             email = decoded_token.get('email')
-            user, created = CustomUser.objects.get_or_create(email=email, defaults={"username" : uid})
+            base_name = email.split('@') [0]
+            short_uid = uid[:5]
+            generated_username = f"{base_name}_{short_uid}"
+            user, created = CustomUser.objects.get_or_create(email=email, defaults={"username" : generated_username})
             if created:
+
                 user.set_unusable_password()
                 user.save()
             refresh = RefreshToken.for_user(user)
