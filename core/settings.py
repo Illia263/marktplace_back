@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework.authtoken',
     'users',
-    'djoser',
     'cloudinary_storage',
     'cloudinary',
     
@@ -130,25 +129,6 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60), 
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),   
     'AUTH_HEADER_TYPES': ('JWT', 'Bearer'),
-}
-DJOSER = {
-    'LOGIN_FIELD' : 'email',
-    'USER_ID_FIELD': 'username',
-    
-    
-    'SEND_ACTIVATION_EMAIL': True,
-    'SEND_CONFIRMATION_EMAIL' : True,
-    'PASSWORD_CHANGED_EMAIL_CONFIRMATION' : True,
-    'PASSWORD_RESET_CONFIRM_URL' : 'password_reset/{uid}/{token}',
-    'ACTIVATION_URL' : 'activate/{uid}/{token}',
-
-    
-    'SERIALIZERS': {
-        'user': 'users.serializers.CustomUserSerializer',
-        'current_user': 'users.serializers.CustomUserSerializer',
-        'user_create': 'users.serializers.CustomUserCreateSerializer',
-        
-    }
 }
 
 CORS_ALLOWED_ORIGINS = [

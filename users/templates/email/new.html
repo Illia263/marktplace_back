@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Password Reset</title>
+</head>
+<body style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
+        <h2 style="color: #2c3e50;">Password Reset Request</h2>
+        <p>Hello,</p>
+        <p>We received a request to reset your password. If you didn't make this request, you can safely ignore this email.</p>
+        <p>To choose a new password, please click the button below:</p>
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="{{ link }}" style="background-color: #3498db; color: white; padding: 12px 25px; text-decoration: none; border-radius: 3px; font-weight: bold;">Reset Password</a>
+        </div>
+        <p>Or copy and paste this link into your browser:</p>
+        <p><a href="{{ link }}" style="color: #3498db; word-break: break-all;">{{ link }}</a></p>
+        <p>Best regards,<br>Your Backend Team</p>
+    </div>
+</body>
+</html>
