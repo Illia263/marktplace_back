@@ -66,7 +66,7 @@ class UserUpdateView(generics.UpdateAPIView):
     serializer_class = UpdateUserSerializer
     lookup_field = 'uuid'
 
-class UserSelfUpdateView(generics.RetrieveAPIView):
+class UserSelfUpdateView(generics.RetrieveUpdateAPIView):
         permission_classes = [IsAuthenticated]
 
         serializer_class = UpdateUserSerializer
@@ -107,6 +107,24 @@ class ResendView(APIView):
         except CustomUser.DoesNotExist:
             return Response({'error' : 'User email is incorrect'}, status=status.HTTP_400_BAD_REQUEST)
         
+class ActivationAccountView(APIView):
+    permission_classes = []
+    def post(self, reqest):
+        uid = reqest.data.get('uid')
+        token = reqest.data.get('token')
+        try:
+            uuid = force_str(urlsafe_base64_decode(uid))
+            user = CustomUser.objects.get(uuid=uuid)
+            user_check = default_token_generator.check_token(user, token)
+            if  user_check:
+                user.is_active = True
+                user.save()
+                return Response({'message' : 'Account activated successfully'})
+            else: 
+                return Response({'message' : 'Invalid or expired token'}, status=status.HTTP_400_BAD_REQUEST)
+        except (ValueError, TypeError, OverflowError, CustomUser.DoesNotExist) as e:
+            return Response({'error' : f'{e}'}, status=status.HTTP_400_BAD_REQUEST)
+        
 class ResetPasswordView(APIView): 
     permission_classes = []
     def post(self, request):
@@ -146,22 +164,5 @@ class ResetPasswordConfirmationView(APIView):
             return Response({'error' : f'{e}'}, status=status.HTTP_400_BAD_REQUEST)
             
 
-class ActivationAccountView(APIView):
-    permission_classes = []
-    def post(self, reqest):
-        uid = reqest.data.get('uid')
-        token = reqest.data.get('token')
-        try:
-            uuid = force_str(urlsafe_base64_decode(uid))
-            user = CustomUser.objects.get(uuid=uuid)
-            user_check = default_token_generator.check_token(user, token)
-            if  user_check:
-                user.is_active = True
-                user.save()
-                return Response({'message' : 'Account activated successfully'})
-            else: 
-                return Response({'message' : 'Invalid or expired token'}, status=status.HTTP_400_BAD_REQUEST)
-        except (ValueError, TypeError, OverflowError, CustomUser.DoesNotExist) as e:
-            return Response({'error' : f'{e}'}, status=status.HTTP_400_BAD_REQUEST)
 
         
