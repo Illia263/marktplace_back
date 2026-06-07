@@ -7,13 +7,13 @@ urlpatterns = [
     path('profiles/<uuid:uuid>/', UserDetailView.as_view(), name='user-details' ),
     path('profiles/<uuid:uuid>/edit/', UserUpdateView.as_view(), name='admin-edit'),
     path('profiles/', UserListView.as_view(), name='user-list'),
+    path('my_profile/', UserSelfUpdateView.as_view(), name='my_profile-edit'),
     path('registration/',RegistrationView.as_view(), name='user-registration' ),
     path('login/', TokenObtainPairView.as_view(), name='jwt-create'),
     path('login/refresh/', TokenRefreshView.as_view(), name='jwt-refresh'),
     path('activation/resend/', ResendView.as_view(), name='resend-confirmation'),
     path('password_reset/request/', ResetPasswordView.as_view(), name='password-reset'),
     path('password_reset/confirmation/', ResetPasswordConfirmationView.as_view(), name='password-reset-confirmation'),
-    path('my_profile/', UserSelfUpdateView.as_view(), name='my_profile-edit'),
     path('activation/', ActivationAccountView.as_view(), name='email-activation')
 ]
 # регистрация - http:localhost:8000/api/auth/users/ (post) (username, email, password, re_password) - /api/auth/registration/

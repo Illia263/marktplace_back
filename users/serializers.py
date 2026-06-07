@@ -39,10 +39,10 @@ class CustomUserCreateSerializer(serializers.ModelSerializer):
 class PublicUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('uuid', 'username', 'description', 'avatar')
+        fields = ('uuid', 'username', 'description', 'avatar', 'dateOfregistration')
 
 class UpdateUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('uuid', 'username', 'description', 'avatar')
+        fields = ('uuid', 'username', 'description', 'avatar', 'balance', 'dateOfregistration', 'email')
     
