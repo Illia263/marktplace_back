@@ -5,26 +5,23 @@ from rest_framework import serializers
 User = get_user_model()
 
 class CustomUserSerializer(serializers.ModelSerializer):
-    dateOfregistration = serializers.DateTimeField(source='date_joined', read_only=True)
     class Meta(serializers.ModelSerializer):
 
         model = User
         
-        fields = ('id', 'uuid', 'username', 'email', 'role', 'balance', 'avatar', 'description', 'dateOfregistration')
+        fields = ('id', 'uuid', 'username', 'email', 'role', 'balance', 'avatar', 'description', 'date_joined')
 class AllPublicUsersSerializer(serializers.ModelSerializer):
-    dateOfregistration = serializers.DateTimeField(source='date_joined', read_only=True)
     class Meta(serializers.ModelSerializer):
 
         model = User
         
-        fields = ('uuid', 'username', 'avatar', 'description', 'dateOfregistration')
+        fields = ('uuid', 'username', 'avatar', 'description', 'date_joined')
 
 
 class CustomUserCreateSerializer(serializers.ModelSerializer):
-    dateOfregistration = serializers.DateTimeField(source='date_joined', read_only=True)
     class Meta:
         model = User
-        fields = ('id', 'uuid', 'username', 'email', 'password', 'role', 'dateOfregistration')
+        fields = ('id', 'uuid', 'username', 'email', 'password', 'role', 'date_joined')
         extra_kwargs = {
             'password' : {'write_only' : True}
         }
@@ -39,10 +36,10 @@ class CustomUserCreateSerializer(serializers.ModelSerializer):
 class PublicUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('uuid', 'username', 'description', 'avatar', 'dateOfregistration')
+        fields = ('uuid', 'username', 'description', 'avatar', 'date_joined')
 
 class UpdateUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('uuid', 'username', 'description', 'avatar', 'balance', 'dateOfregistration', 'email')
+        fields = ('uuid', 'username', 'description', 'avatar', 'balance', 'date_joined', 'email')
     
