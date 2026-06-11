@@ -8,7 +8,9 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('users.urls')),
-    path('api/', include('games.urls'))
+    path('api/games/', include('games.urls')),
+    path('api/offers/', include('offers.urls')),
+    
 ]
 
 

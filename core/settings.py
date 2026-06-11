@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'games',
+    'offers',
     
 
 ]
