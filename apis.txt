@@ -22,6 +22,7 @@
 
 # # api/games/ - games
 # api/games/categories/ - categories
+# api/games/{slug} - sprcific game
 
 # api/offers/ - all offers
 # api/offers/{uuid} - specific offer
