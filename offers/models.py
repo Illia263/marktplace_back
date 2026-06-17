@@ -9,8 +9,9 @@ class Offer(models.Model):
     seller = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-
+    
     title = models.CharField(max_length=255)
+
     description = models.TextField(max_length=10000)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.IntegerField(default=1)
@@ -18,7 +19,6 @@ class Offer(models.Model):
     is_auto_delivery = models.BooleanField(default=False)
     secret_data = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    # JSON-поле для зберігання словників (наприклад: {"mmr": 5000, "role": "support"})
     custom_field = models.JSONField(default=dict, blank=True, null=True)
 
     def __str__(self):

@@ -1,3 +1,4 @@
+
 # регистрация - http:localhost:8000/api/auth/users/ (post) (username, email, password, re_password) - /api/auth/registration/
 
 # активация - /api/auth/users/activation/ (uid,token) (post) - /api/auth/activation/
@@ -26,3 +27,5 @@
 
 # api/offers/ - all offers
 # api/offers/{uuid} - specific offer
+# api/offers/{game.slug}/{category.slug} - game by name nad category
+# api/offers/{game.slug} - all offers for specific game

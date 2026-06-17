@@ -18,7 +18,29 @@ class OfferDetailView(generics.RetrieveAPIView):
     serializer_class = OfferSerializer
     lookup_field = 'uuid'
 
+class GameByNameAndCategoryView(generics.ListAPIView):
+   
+    serializer_class = OfferSerializer
+    permission_classes = []
 
+    def get_queryset(self):
+        game_slug = self.kwargs['game_slug']
+        category_slug = self.kwargs['category_slug']
+        return Offer.objects.filter(
+            game__slug=game_slug,
+            category__slug=category_slug,
+            is_active=True  
+        )
+
+class GameByNameView(generics.ListAPIView):
+    permission_classes = []
+    serializer_class = OfferSerializer
+    def get_queryset(self):
+        game_slug = self.kwargs['game_slug']
+        return Offer.objects.filter(
+            game__slug=game_slug,
+            is_active=True
+        )
 
 
 # #Супер! Почнемо з найважливішого для будь-якого маркетплейсу — **Безпеки та Авторизації продавця**. Ми не можемо дозволити хакерам створювати товари від твого імені.
