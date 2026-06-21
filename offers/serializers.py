@@ -14,7 +14,7 @@ class OfferSerializer(serializers.ModelSerializer):
             representation['seller'] = {
                 'id': instance.seller.id,
                 'username' : instance.seller.username,
-                'avatar' : instance.seller.avatar 
+                'avatar' : instance.seller.avatar.url if instance.seller.avatar else None
 
             }
         if instance.game:
