@@ -10,7 +10,7 @@ urlpatterns = [
     path('api/auth/', include('users.urls')),
     path('api/games/', include('games.urls')),
     path('api/offers/', include('offers.urls')),
-    
+    path('api/orders', include('orders.urls')),
 ]
 
 
